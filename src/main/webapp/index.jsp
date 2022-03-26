@@ -14,10 +14,10 @@
 
 <%
     PrintWriter out1 = response.getWriter();
-    if( (int)request.getAttribute("countZasob1") > (int)request.getAttribute("countZasob2") &&
-        (int)request.getAttribute("countZasob1") > (int)request.getAttribute("countZasob3")) {
+    if(     (int)request.getAttribute("countZasob1") > (int)request.getAttribute("countZasob2") &&
+            (int)request.getAttribute("countZasob1") > (int)request.getAttribute("countZasob3")) {
         out1.println("<p><a href=\"zasob1.jsp\">Hello - zasób 1 -- Ilość wywołań: </a>" + request.getAttribute("countZasob1") + "</p>");
-        if ((int) request.getAttribute("countZasob2") > (int) request.getAttribute("countZasob3")) {
+        if ((int) request.getAttribute("countZasob2") >= (int) request.getAttribute("countZasob3")) {
             out1.println("<p><a href=\"zasob2.jsp\">Hello - zasób 2 -- Ilość wywołań: </a>" + request.getAttribute("countZasob2") + "</p>");
             out1.println("<p><a href=\"zasob3.jsp\">Hello - zasób 3 -- Ilość wywołań: </a>" + request.getAttribute("countZasob3") + "</p>");
         } else {
@@ -25,9 +25,8 @@
             out1.println("<p><a href=\"zasob2.jsp\">Hello - zasób 2 -- Ilość wywołań: </a>" + request.getAttribute("countZasob2") + "</p>");
         }
     }
-
-    if( (int)request.getAttribute("countZasob2") > (int)request.getAttribute("countZasob1") &&
-            (int)request.getAttribute("countZasob2") > (int)request.getAttribute("countZasob3")) {
+    else if( (int)request.getAttribute("countZasob2") >= (int)request.getAttribute("countZasob1") &&
+            (int)request.getAttribute("countZasob2") >= (int)request.getAttribute("countZasob3")) {
         out1.println("<p><a href=\"zasob2.jsp\">Hello - zasób 2 -- Ilość wywołań: </a>" + request.getAttribute("countZasob2") + "</p>");
         if ((int) request.getAttribute("countZasob1") > (int) request.getAttribute("countZasob3")) {
             out1.println("<p><a href=\"zasob1.jsp\">Hello - zasób 1 -- Ilość wywołań: </a>" + request.getAttribute("countZasob1") + "</p>");
@@ -37,8 +36,7 @@
             out1.println("<p><a href=\"zasob1.jsp\">Hello - zasób 1 -- Ilość wywołań: </a>" + request.getAttribute("countZasob1") + "</p>");
         }
     }
-
-    if( (int)request.getAttribute("countZasob3") > (int)request.getAttribute("countZasob1") &&
+    else if( (int)request.getAttribute("countZasob3") >= (int)request.getAttribute("countZasob1") &&
             (int)request.getAttribute("countZasob3") > (int)request.getAttribute("countZasob2")) {
         out1.println("<p><a href=\"zasob3.jsp\">Hello - zasób 3 -- Ilość wywołań: </a>" + request.getAttribute("countZasob3") + "</p>");
         if ((int) request.getAttribute("countZasob1") > (int) request.getAttribute("countZasob2")) {
@@ -48,6 +46,11 @@
             out1.println("<p><a href=\"zasob2.jsp\">Hello - zasób 2 -- Ilość wywołań: </a>" + request.getAttribute("countZasob2") + "</p>");
             out1.println("<p><a href=\"zasob1.jsp\">Hello - zasób 1 -- Ilość wywołań: </a>" + request.getAttribute("countZasob1") + "</p>");
         }
+    }
+    else{
+        out1.println("<p><a href=\"zasob1.jsp\">Hello - zasób 1 -- Ilość wywołań: </a>" + request.getAttribute("countZasob1") + "</p>");
+        out1.println("<p><a href=\"zasob2.jsp\">Hello - zasób 2 -- Ilość wywołań: </a>" + request.getAttribute("countZasob2") + "</p>");
+        out1.println("<p><a href=\"zasob3.jsp\">Hello - zasób 3 -- Ilość wywołań: </a>" + request.getAttribute("countZasob3") + "</p>");
     }
 %>
 <p><a href="zasob1.jsp">Hello - zasób 1 -- Ilość wywołań: </a><%= request.getAttribute("countZasob1")%></p>
